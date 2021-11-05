@@ -1,0 +1,38 @@
+composer create-project --prefer-dist laravel/laravel laravel8ecommerce
+composer require livewire/livewire
+
+ -->lets create livewire component for the homepage 
+php artisan make:livewire HomeComponent
+-->app>http>Livewire>HomeComponent
+
+-->for Shop components 
+php artisan make:livewire ShopComponent +diğer components
+
+composer require laravel/Jetstream
+
+php artisan jetstream:install livewire
+
+-->admin ve user için middleware lazım
+php artisan make:middleware AuthAdmin    
+
+-->düzenlenen bu dosyayı çalıştırmak için Kernel.php dosyasına eklemek lazım
+
+
+...
+
+php artisan make:model Category -m
+php artisan make:model Product -m
+--> added some features
+
+php artisan migrate
+
+php artisan make:factory CategoryFactory --model=Category
+php artisan make:factory ProductFactory --model=Product
+
+php artisan db:seed 
+
+
+
+
+
+
