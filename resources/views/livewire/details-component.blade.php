@@ -1,4 +1,4 @@
-	<!--main area-->
+	
 	<main id="main" class="main-site">
 
 		<div class="container">
@@ -276,4 +276,4 @@
 		</div><!--end container-->
 
 	</main>
-	<!--main area-->
+	
