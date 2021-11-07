@@ -4,6 +4,7 @@ use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\ContactComponent;
+use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
@@ -34,6 +35,9 @@ Route::get('/checkout', CheckoutComponent::class)->name('checkout');
 
 Route::get('/contact', ContactComponent::class)->name('contact');
 
+Route::get('/product/{slug}', DetailsComponent::class)->name('product.details');
+
+//Route::get('/category/{slug}', ShopComponent::class)->name('category.products');
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //	return view('dashboard');

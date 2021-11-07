@@ -32,7 +32,20 @@ php artisan make:factory ProductFactory --model=Product
 php artisan db:seed 
 
 
+php artisan make:livewire DetailsComponent
 
+--> For downloading shopping cart 
+composer require hardevine/shoppingcart
 
+--> after  this we need to add this to the app.php file 
+[Service Provider] -->Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+[Class aliases] --> 'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class, 
 
+php artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServiceProvider" --tag="config"
 
+Sepete ekleme işlemi için wire ekledik. ShopComponent.php dosyasında olan store methoduna ulaşmak için ; 
+<a> tagı içerisinde 
+wire::click.prevent="store({{$product_id}}, {{$product_name}}, {{$product_price}})
+ yazıyoruz. Bu saye tıklanınca store çalıştırmak için. 
+
+ @foreach (Cart::content() as $item) cart-component.blade.php dosyasında yazarak modeli olmadan kullandık.
