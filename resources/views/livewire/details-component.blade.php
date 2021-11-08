@@ -226,7 +226,7 @@
 											</a>
 										</div>
 										<div class="product-info">
-											<a href="{{ route('product.details',['slug' =>$p_product->slug]) }}" title="{{$p_product->name}}" class="product-name"><span>{{$p_product->short_description}}</span></a>
+											<a href="{{ route('product.details',['slug' =>$p_product->slug]) }}" title="{{$p_product->name}}" class="product-name"><span>{{Str::limit($p_product->short_description,50)}}</span></a>
 											<div class="wrap-price"><span class="product-price">${{$p_product->regular_price}}</span></div>
 										</div>
 									</div>
@@ -260,7 +260,7 @@
 										</div>
 									</div>
 									<div class="product-info">
-										<a href="{{ route('product.details',['slug' =>$r_product->slug]) }}" class="product-name"><span>{{$r_product->short_description}}</span></a>
+										<a href="{{ route('product.details',['slug' =>$r_product->slug]) }}" class="product-name"><span>{{str::limit($r_product->short_description,50)}}</span></a>
 										<div class="wrap-price"><span class="product-price">${{$r_product->regular_price}}</span></div>
 									</div>
 								</div>

@@ -49,3 +49,4 @@ wire::click.prevent="store({{$product_id}}, {{$product_name}}, {{$product_price}
  yazıyoruz. Bu saye tıklanınca store çalıştırmak için. 
 
  @foreach (Cart::content() as $item) cart-component.blade.php dosyasında yazarak modeli olmadan kullandık.
+$ php artisan make:livewire HeaderSearchComponent

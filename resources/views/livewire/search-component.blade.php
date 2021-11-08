@@ -5,9 +5,8 @@
 
 			<div class="wrap-breadcrumb">
 				<ul>
-					<li class="item-link"><a href="{{ route('index') }}" class="link">home</a></li>
-					<li class="item-link"><span>Product Categories </span></li>
-					<li class="item-link"><span>{{$category_name}}</span></li>
+					<li class="item-link"><a href="#" class="link">home</a></li>
+					<li class="item-link"><span>Digital & Electronics</span></li>
 				</ul>
 			</div>
 			<div class="row">
@@ -22,7 +21,7 @@
 
 					<div class="wrap-shop-control">
 
-						<h1 class="shop-title">{{$category_name}}</h1>
+						<h1 class="shop-title">Digital & Electronics</h1>
 
 						<div class="wrap-right">
 
@@ -56,30 +55,34 @@
 
 					</div><!--end wrap shop control-->
 
-					<div class="row">
+                    @if ($products->count() > 0)
+                      	<div class="row">
+                            <ul class="product-list grid-products equal-container">
+                                @foreach ($products as $product)								
+                            
+                                <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
+                                    <div class="product product-style-3 equal-elem ">
+                                        <div class="product-thumnail">
+                                            <a href="{{ route('product.details',['slug' =>$product->slug]) }}" title="{{$product->name}}">
+                                                <figure><img src="{{asset('assets/images/products')}}/{{$product->image}}" alt="{{$product->name}}"></figure>
+                                            </a>
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="{{ route('product.details',['slug' =>$product->slug]) }}" class="product-name"><span>{{$product->name}}</span></a>
+                                            <div class="wrap-price"><span class="product-price">{{$product->regular_price}}</span></div>
+                                            <a href="#" class="btn add-to-cart" wire:click.prevent="store('{{$product->name}}','{{$product->id}}','{{$product->regular_price}}' )">Add To Cart</a>														
+                                        
+                                        </div>
+                                    </div>
+                                </li>
+                                    @endforeach	
+                            </ul> 
+				    	</div>
+                        @else
+                        <p style="padding-top:30px ">No Products</p>                            
+                    @endif
+				
 
-						<ul class="product-list grid-products equal-container">
-							@foreach ($products as $product)
-								
-						
-							<li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
-								<div class="product product-style-3 equal-elem ">
-									<div class="product-thumnail">
-										<a href="{{ route('product.details',['slug' =>$product->slug]) }}" title="{{$product->name}}">
-											<figure><img src="{{asset('assets/images/products')}}/{{$product->image}}" alt="{{$product->name}}"></figure>
-										</a>
-									</div>
-									<div class="product-info">
-										<a href="{{ route('product.details',['slug' =>$product->slug]) }}" class="product-name"><span>{{$product->name}}</span></a>
-										<div class="wrap-price"><span class="product-price">{{$product->regular_price}}</span></div>
-										<a href="#" class="btn add-to-cart" wire:click.prevent="store('{{$product->name}}','{{$product->id}}','{{$product->regular_price}}' )">Add To Cart</a>														
-									
-									</div>
-								</div>
-							</li>
-								@endforeach	
-						</ul> 
-					</div>
 					<div class="wrap-pagination-info">
 						{{$products->links()}}
 						{{--<ul class="page-numbers">
@@ -171,20 +174,20 @@
 						<h2 class="widget-title">Popular Products</h2>
 						<div class="widget-content">
 							<ul class="products">
-                                @foreach ($products as $product)                                    
-                                <li class="product-item">
-                                    <div class="product product-widget-style">
-                                        <div class="thumbnnail">
-                                            <a href="{{ route('product.details',['slug' =>$product->slug]) }}" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
-                                                <figure><img src="{{asset('assets/images/products/digital_1.jpg')}}" alt=""></figure>
-                                            </a>
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="{{ route('product.details',['slug' =>$product->slug]) }}" class="product-name"><span>{{ Str::limit($product->short_description,50)}}</span></a>
-                                            <div class="wrap-price"><span class="product-price">${{$product->regular_price}}</span></div>
-                                        </div>
-                                    </div>
-                                </li>
+								@foreach ($products as $product)                                    
+									<li class="product-item">
+										<div class="product product-widget-style">
+											<div class="thumbnnail">
+												<a href="{{ route('product.details',['slug' =>$product->slug]) }}" title="Radiant-360 R6 Wireless Omnidirectional Speaker [White]">
+													<figure><img src="{{asset('assets/images/products/digital_1.jpg')}}" alt=""></figure>
+												</a>
+											</div>
+											<div class="product-info">
+												<a href="{{ route('product.details',['slug' =>$product->slug]) }}" class="product-name"><span>{{$product->short_description}}</span></a>
+												<div class="wrap-price"><span class="product-price">${{$product->regular_price}}</span></div>
+											</div>
+										</div>
+									</li>
                                 @endforeach
 
 							</ul>

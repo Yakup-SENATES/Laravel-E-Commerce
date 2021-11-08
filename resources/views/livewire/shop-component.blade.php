@@ -179,7 +179,7 @@
 												</a>
 											</div>
 											<div class="product-info">
-												<a href="{{ route('product.details',['slug' =>$product->slug]) }}" class="product-name"><span>{{$product->short_description}}</span></a>
+												<a href="{{ route('product.details',['slug' =>$product->slug]) }}" class="product-name"><span>{{Str::limit($product->short_description,50)}}</span></a>
 												<div class="wrap-price"><span class="product-price">${{$product->regular_price}}</span></div>
 											</div>
 										</div>
