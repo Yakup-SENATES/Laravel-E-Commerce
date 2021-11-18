@@ -79,8 +79,11 @@
 														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout_id').submit(); ">Logout</a>
 													</li>	
 													<li class="menu-item">
-														<a href="{{route('admin.categories')}}" title="Categories">Categories</a>
-														</li>	
+														<a href="{{route('admin.categories')}}">Categories</a>
+													</li>	
+													<li class="menu-item">
+														<a href="{{route('admin.products')}}">Products</a>
+													</li>	
 													<form id="logout_id" action="{{ route('logout') }}" method="POST">
 														@csrf															
 													</form>							
