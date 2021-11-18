@@ -79,10 +79,13 @@
 														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout_id').submit(); ">Logout</a>
 													</li>	
 													<li class="menu-item">
-														<a href="{{route('admin.categories')}}">Categories</a>
+														<a title="Categories" href="{{route('admin.categories')}}">Categories</a>
 													</li>	
 													<li class="menu-item">
-														<a href="{{route('admin.products')}}">Products</a>
+														<a title="Products" href="{{route('admin.products')}}">Products</a>
+													</li>	
+													<li class="menu-item">
+														<a title="Manage Home Slider" href="{{route('admin.homeSlider')}}">Manage Home Slider</a>
 													</li>	
 													<form id="logout_id" action="{{ route('logout') }}" method="POST">
 														@csrf															

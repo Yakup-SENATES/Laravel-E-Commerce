@@ -52,3 +52,13 @@ wire::click.prevent="store({{$product_id}}, {{$product_name}}, {{$product_price}
 $ php artisan make:livewire HeaderSearchComponent
 
 php artisan make:livewire admin/AdminCategoryComponent
+..
+..
+..
+$ php artisan make:model HomeSlider -m model oluştuk içini dolduruduk ardından migrate ettik.
+şimdi de 3 adet wire model ekleyerek işlemi bitireceğiz. 1 tane list 1 tane create 2 tane update
+
+$ php artisan make:livewire admin/AdminAddHomeSliderComponent
+$ php artisan make:livewire admin/AdminEditHomeSlider
+
+
