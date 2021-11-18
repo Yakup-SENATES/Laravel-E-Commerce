@@ -38,7 +38,7 @@
                                             <td>{{$category->name}}</td>
                                             <td>{{$category->slug}}</td>
                                             <td>
-                                                <button>Delete</button>
+                                              <a href="{{ route('admin.categories.edit', ['category_slug'=>$category->slug]) }}"><i class="fa fa-edit fa-2x"></i></a>
                                             </td>
                                         </tr>                                
                                         @endforeach
