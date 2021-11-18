@@ -47,7 +47,7 @@
                                             <td>{{$product->regular_price}}</td>
                                             <td>{{$product->getCategory->name}}</td>
                                             <td>{{$product->created_at}}</td>
-                                            <td></td>
+                                            <td><a href="{{ route('admin.products.edit', ['product_slug'=>$product->slug]) }}"><i class="fa fa-edit fa-2x text-info"></i></a></td>
                                             <td>                                        
                                                 {{--<a href="{{ route('admin.categories.edit', ['product_slug'=>$product->slug]) }}"><i class="fa fa-edit fa-2x"></i></a>                                              
                                                 <a href="#" wire:click.prevent="deleteProduct({{$product->id}})" style="margin-left:10px"><i class="fa fa-trash fa-2x text-danger justify-end"></i>
