@@ -61,4 +61,7 @@ $ php artisan make:model HomeSlider -m model oluştuk içini dolduruduk ardında
 $ php artisan make:livewire admin/AdminAddHomeSliderComponent
 $ php artisan make:livewire admin/AdminEditHomeSlider
 
+admin select home categories için selec2.org kaynağından select işlemi için görsel araç eklendi.
+seçilen categorilerin dizi içerisinde model e aktarılmasını istiyoruz.
 
+php artisan make:model HomeCategory -m
