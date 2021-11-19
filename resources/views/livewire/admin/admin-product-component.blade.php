@@ -32,6 +32,7 @@
                                         <th>Name</th>
                                         <th>Stock</th>
                                         <th>Price</th>
+                                        <th>Sale Price</th>
                                         <th>Category</th>
                                         <th>Date</th>
                                         <th>Action</th>
@@ -45,6 +46,7 @@
                                             <td>{{$product->name}}</td>
                                             <td>{{$product->stock_status}}</td>
                                             <td>{{$product->regular_price}}</td>
+                                            <td>{{$product->sale_price}}</td>
                                             <td>{{$product->getCategory->name}}</td>
                                             <td>{{$product->created_at}}</td>
                                             <td><a href="{{ route('admin.products.edit', ['product_slug'=>$product->slug]) }}"><i class="fa fa-edit fa-2x text-info"></i></a>
