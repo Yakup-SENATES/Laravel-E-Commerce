@@ -11,13 +11,19 @@ use Cart;
 
 class ShopComponent extends Component
 {
-    public $sorting, $pagesize;
+    public $sorting, $pagesize, $min_price, $max_price;
 
-
+    /**
+     * Mount the component
+     *
+     * @return void
+     */
     public function mount()
     {
         $this->sorting  = 'default';
         $this->pagesize = 12;
+        $this->min_price = 1;
+        $this->max_price = 1000;
     }
 
     /**
@@ -39,13 +45,13 @@ class ShopComponent extends Component
     public function render()
     {
         if ($this->sorting == 'date') {
-            $products = Product::orderBy('created_at', 'DESC')->paginate($this->pagesize);
+            $products = Product::whereBetween('regular_price', [$this->min_price, $this->max_price])->orderBy('created_at', 'DESC')->paginate($this->pagesize);
         } else if ($this->sorting == 'price') {
-            $products = Product::orderBy('regular_price', 'ASC')->paginate($this->pagesize);
+            $products = Product::whereBetween('regular_price', [$this->min_price, $this->max_price])->orderBy('regular_price', 'ASC')->paginate($this->pagesize);
         } else if ($this->sorting == 'price-desc') {
-            $products = Product::orderBy('regular_price', 'DESC')->paginate($this->pagesize);
+            $products = Product::whereBetween('regular_price', [$this->min_price, $this->max_price])->orderBy('regular_price', 'DESC')->paginate($this->pagesize);
         } else {
-            $products = Product::paginate($this->pagesize);
+            $products = Product::whereBetween('regular_price', [$this->min_price, $this->max_price])->paginate($this->pagesize);
         }
 
         $categories = Category::all();

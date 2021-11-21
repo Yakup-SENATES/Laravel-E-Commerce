@@ -82,3 +82,6 @@ php artisan make:livewire admin/AdminSaleComponent
 sale time hala açıksa kontrol edip detail page de de ona gore price ekrana bastırmak için
 kontrol edilmelidir
 @if ($product->sale_price>0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())
+
+Shop page'e fiyat filtrelemesi ekleyeceğiz.
+Bunun için nouislider.js kullanılacaktır. 
