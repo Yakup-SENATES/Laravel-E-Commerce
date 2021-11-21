@@ -65,3 +65,20 @@ admin select home categories için selec2.org kaynağından select işlemi için
 seçilen categorilerin dizi içerisinde model e aktarılmasını istiyoruz.
 
 php artisan make:model HomeCategory -m
+
+Geri sayım için Bootstrap datetimepicker kullanılacaktır
+https://cdnjs.com/libraries/bootstrap-datepicker
+
+
+php artisan make:model Sale -m 
+
+-->Ürünler için indirim saatleri ayarlanacak
+-->Ayarlamalar için livewire Component oluşturmalıyız
+-->Livewire component dosylarının controller mantığında olduğu unutulmamalıdır
+
+php artisan make:livewire admin/AdminSaleComponent
+-->bu livewire için route Ayarlanmalıdır
+
+sale time hala açıksa kontrol edip detail page de de ona gore price ekrana bastırmak için
+kontrol edilmelidir
+@if ($product->sale_price>0 && $sale->status == 1 && $sale->sale_date > Carbon\Carbon::now())

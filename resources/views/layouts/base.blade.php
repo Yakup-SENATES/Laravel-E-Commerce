@@ -18,6 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('assets/css/flexslider.css')}}">
 	{{--link for select2.org tool--}}
 	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	@stack('css')
 	@livewireStyles
 </head>
 <body class="home-page home-01 ">
@@ -92,6 +93,9 @@
 													
 													<li class="menu-item">
 														<a title="Manage Home Categories" href="{{route('admin.home.categories')}}">Manage Home Categories</a>
+													</li>
+													<li class="menu-item">
+														<a title="Sale Setting" href="{{route('admin.sale')}}">Sale Setting</a>
 													</li>
 													
 													<li class="menu-item">
@@ -480,6 +484,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 	@livewireScripts
+
 	@stack('scripts')
 </body>
 </html>

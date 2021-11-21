@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Product;
+use App\Models\Sale;
 use Livewire\Component;
 use Cart;
 
@@ -52,10 +53,12 @@ class DetailsComponent extends Component
         // Aynı kategoriye ait ürünleri seçme
         $related_products = Product::whereCategoryId($product->category_id)->inRandomOrder()->limit(5)->get()->except($product->id);
 
+        $sale = Sale::find(1);
         return view('livewire.details-component', [
             'product' => $product,
             'popular_products'  => $popular_products,
-            'related_products' => $related_products
+            'related_products' => $related_products,
+            'sale' => $sale,
         ])->layout('layouts.base');
     }
 }
