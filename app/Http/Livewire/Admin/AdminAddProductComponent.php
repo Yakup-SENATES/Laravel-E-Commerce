@@ -47,6 +47,24 @@ class AdminAddProductComponent extends Component
         $this->slug = Str::slug($this->name);
     }
 
+    public function updated($fields)
+    {
+        $this->validateOnly($fields, [
+            'name' => 'required|min:3',
+            'slug' => 'required|min:3|unique:products',
+            'short_description' => 'required|min:3',
+            'description' => 'required|min:3',
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'numeric',
+            'SKU' => 'required',
+            'stock_status' => 'required',
+            'quantity' => 'required|numeric',
+            'image' => 'required|mimes:jpeg,png,jpg',
+            'category_id' => 'required',
+        ]);
+    }
+
+
     /**
      * store the product in the database.
      *
@@ -54,6 +72,20 @@ class AdminAddProductComponent extends Component
      */
     public function store()
     {
+        $this->validate([
+            'name' => 'required|min:3',
+            'slug' => 'required|min:3|unique:products',
+            'short_description' => 'required|min:3',
+            'description' => 'required|min:3',
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'numeric',
+            'SKU' => 'required',
+            'stock_status' => 'required',
+            'quantity' => 'required|numeric',
+            'image' => 'required|mimes:jpeg,png,jpg',
+            'category_id' => 'required',
+        ]);
+
         $product  = new Product();
         $product->name = $this->name;
         $product->slug = $this->slug;

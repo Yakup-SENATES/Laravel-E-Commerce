@@ -63,8 +63,46 @@ class AdminEditProductComponent extends Component
         $this->slug = Str::slug($this->name);
     }
 
+    public function updated($fields)
+    {
+        $this->validateOnly($fields, [
+            'name' => 'required|min:3',
+            'slug' => 'required|min:3|unique:products',
+            'short_description' => 'required|min:3',
+            'description' => 'required|min:3',
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'numeric',
+            'SKU' => 'required',
+            'stock_status' => 'required',
+            'quantity' => 'required|numeric',
+            'newImage' => 'required|mimes:jpeg,png,jpg',
+            'category_id' => 'required',
+        ]);
+    }
+
+    /**
+     * Update the product
+     *
+     * @return void
+     */
     public function updateProduct()
     {
+        $this->validate([
+            'name' => 'required|min:3',
+            'slug' => 'required|min:3|unique:products',
+            'short_description' => 'required|min:3',
+            'description' => 'required|min:3',
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'numeric',
+            'SKU' => 'required',
+            'stock_status' => 'required',
+            'quantity' => 'required|numeric',
+            //'image' => 'required|mimes:jpeg,png,jpg',
+            'category_id' => 'required',
+        ]);
+
+
+
         $product = Product::find($this->product_id);
 
         $product->name = $this->name;
@@ -80,9 +118,8 @@ class AdminEditProductComponent extends Component
         if ($this->newImage) {
             $imageName = Carbon::now()->timestamp . '.' . $this->newImage->extension();
             $this->image->storeAs('products', $imageName);
-            $product->image = $imageName;
+            $product->image = $newImage;
         }
-
         $product->category_id = $this->category_id;
         $product->save();
         session()->flash('message', 'Product has been updated successfully');

@@ -24,43 +24,64 @@
                          <label for="" class="col-md-4 control-label">Product Name</label>
                          <div class="col-md-4">
                              <input type="text" placeholder="Product Name" class="form-control input-md" wire:model="name" wire:keyup="generateSlug"/>
+                                @error('name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                          </div>
                      </div>
                      <div class="form-group">
                          <label for="" class="col-md-4 control-label">Product Slug</label>
                          <div class="col-md-4">
                              <input type="text" placeholder="Product Slug" class="form-control input-md" wire:model="slug"/>
-                         </div>
+                                @error('slug')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                      </div>
                      <div class="form-group">
                          <label for="" class="col-md-4 control-label">Short Description</label>
                          <div class="col-md-4">
                              <textarea cols="30" rows="5" class="form-control" placeholder="Short Description" wire:model="short_description"></textarea>
+                                @error('short_description')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                          </div>
                      </div>
                      <div class="form-group">
                          <label for="" class="col-md-4 control-label">Description</label>
                          <div class="col-md-4">
                              <textarea cols="30" rows="10" class="form-control" placeholder="Description" wire:model="description"></textarea>
-                         </div>
+                                @error('description')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                      </div>
                      <div class="form-group">
                          <label for="" class="col-md-4 control-label">Regular Price</label>
                          <div class="col-md-4">
                              <input type="text" placeholder="Regular Price" class="form-control input-md" wire:model="regular_price"/>
-                         </div>
+                                @error('regular_price')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                      </div>
                      <div class="form-group">
                          <label for="" class="col-md-4 control-label">Sale Price</label>
                          <div class="col-md-4">
                              <input type="text" placeholder="Product Sale" class="form-control input-md" wire:model="sale_price"/>
-                         </div>
+                                @error('sale_price')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                      </div>
                      <div class="form-group">
                          <label for="" class="col-md-4 control-label">SKU</label>
                          <div class="col-md-4">
                              <input type="text" placeholder="SKU" class="form-control input-md" wire:model="SKU" />
-                         </div>
+                                @error('SKU')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                      </div>
                      <div class="form-group">
                          <label for="" class="col-md-4 control-label">Stock</label>
@@ -69,6 +90,9 @@
                                  <option value="instock">In Stock</option>
                                  <option value="outofstock">Out Of Stock</option>
                              </select>
+                                @error('stock_status')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                          </div>
                      </div>
                      <div class="form-group">
@@ -84,7 +108,10 @@
                          <label for="" class="col-md-4 control-label">Quantity</label>
                          <div class="col-md-4">
                              <input type="text" placeholder="Quantity" class="form-control input-md" wire:model="quantity"/>
-                         </div>
+                                @error('quantity')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                      </div>
                      <div class="form-group">
                          <label for="" class="col-md-4 control-label">Product Image</label>
@@ -94,8 +121,10 @@
                                  <img src="{{$newImage->temporaryUrl()}}" width="120">
                                 @else
                                 <img src="{{asset('assets/images/products')}}/{{$image}}" width="120"> 
-
                             @endif
+                                @error('newImage')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                              
                          </div>
                      </div>
@@ -108,6 +137,9 @@
                                      <option value="{{$category->id}}">{{$category->name}}</option>                                    
                                  @endforeach
                              </select>
+                                @error('category_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                          </div>
                      </div>
                      <div class="form-group">

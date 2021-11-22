@@ -32,12 +32,14 @@
                             </div>
                             
                             <div class="form-group">
+                                <label class="col-md-5 control-label"></label>
                                 <div class="col-md-4 control-label">
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 control-label">
                                      <button type="submit" class="btn btn-primary btn-block">Save</button>
                                     </div>
                                 </div>
                             </div>
+                      
                         </form>
                     </div>
                 </div>
