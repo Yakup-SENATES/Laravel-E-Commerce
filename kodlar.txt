@@ -85,3 +85,9 @@ kontrol edilmelidir
 
 Shop page'e fiyat filtrelemesi ekleyeceğiz.
 Bunun için nouislider.js kullanılacaktır. 
+
+----------------------------------------------------------------------------------------------------
+event.stopImmediatePropagation(); Metodu nu silme butonuna basınca çalışacak şekilde ayarladık
+Bu sayede  Silme işleminde direk silmeden önce soracak
+onclick="confirm('Are You Sure, You Wnat To Delete This Category?')|| event.stopImmediatePropagation()"
+----------------------------------------------------------------------------------------------------

@@ -42,7 +42,7 @@
                                             <td>{{$category->slug}}</td>
                                             <td>                                        
                                                 <a href="{{ route('admin.categories.edit', ['category_slug'=>$category->slug]) }}"><i class="fa fa-edit fa-2x"></i></a>                                              
-                                                <a href="#" wire:click.prevent="deleteCategory({{$category->id}})" style="margin-left:10px"><i class="fa fa-trash fa-2x text-danger justify-end"></i>
+                                                <a href="#" onclick="confirm('Are You Sure, You Wnat To Delete This Category?')|| event.stopImmediatePropagation()"  wire:click.prevent="deleteCategory({{$category->id}})" style="margin-left:10px"><i class="fa fa-trash fa-2x text-danger justify-end"></i>
                                                 </a>
                                          
                                             </td>
