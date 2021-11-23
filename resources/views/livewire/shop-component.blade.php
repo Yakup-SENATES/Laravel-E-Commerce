@@ -110,6 +110,7 @@
 								@endforeach	
 						</ul> 
 					</div>
+					
 					<div class="wrap-pagination-info">
 						{{$products->links()}}
 						{{--<ul class="page-numbers">
