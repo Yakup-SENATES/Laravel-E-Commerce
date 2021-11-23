@@ -482,7 +482,9 @@
 	<script src="{{asset('assets/js/functions.js')}}"></script>
 	{{--select2.org script--}}
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
+	{{--tinymce Editör--}}
+	<script src="https://cdn.tiny.cloud/1/jsyyyhgmz6sggrtg0pd9ur4dcwkguymw0jul0u0gdtfl0df7/tinymce/5/tinymce.min.js" referrerpolicy="origin">
+	</script>
 	@livewireScripts
 
 	@stack('scripts')

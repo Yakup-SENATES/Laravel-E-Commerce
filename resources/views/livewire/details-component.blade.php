@@ -43,7 +43,7 @@
                             <h2 class="product-name">{{$product->name}}</h2>
                             <div class="short-desc">
                                 <ul>
-									{{$product->short_description}}
+									{!!$product->short_description!!}
                                 </ul>
                             </div>
                             <div class="wrap-social">
@@ -88,13 +88,13 @@
 						</div>
 						<div class="advance-info">
 							<div class="tab-control normal">
-								<a href="#description" class="tab-control-item active">description</a>
+								<a href="#description" class="tab-control-item active">Description</a>
 								<a href="#add_infomation" class="tab-control-item">Addtional Infomation</a>
 								<a href="#review" class="tab-control-item">Reviews</a>
 							</div>
 							<div class="tab-contents">
 								<div class="tab-content-item active" id="description">
-									<p>{{$product->description}}</p>
+									<p>{!!$product->description!!}</p>
 								</div>
 								<div class="tab-content-item " id="add_infomation">
 									<table class="shop_attributes">
@@ -249,7 +249,7 @@
 											</a>
 										</div>
 										<div class="product-info">
-											<a href="{{ route('product.details',['slug' =>$p_product->slug]) }}" title="{{$p_product->name}}" class="product-name"><span>{{Str::limit($p_product->short_description,50)}}</span></a>
+											<a href="{{ route('product.details',['slug' =>$p_product->slug]) }}" title="{{$p_product->name}}" class="product-name"><span>{!!Str::limit($p_product->short_description,50)!!}</span></a>
 											<div class="wrap-price"><span class="product-price">${{$p_product->regular_price}}</span></div>
 										</div>
 									</div>
@@ -283,7 +283,7 @@
 										</div>
 									</div>
 									<div class="product-info">
-										<a href="{{ route('product.details',['slug' =>$r_product->slug]) }}" class="product-name"><span>{{str::limit($r_product->short_description,50)}}</span></a>
+										<a href="{{ route('product.details',['slug' =>$r_product->slug]) }}" class="product-name"><span>{!!str::limit($r_product->short_description,50)!!}</span></a>
 										<div class="wrap-price"><span class="product-price">${{$r_product->regular_price}}</span></div>
 									</div>
 								</div>
