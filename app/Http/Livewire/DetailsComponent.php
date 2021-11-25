@@ -10,7 +10,8 @@ use Cart;
 
 class DetailsComponent extends Component
 {
-    public $slug;
+    public $slug, $qty;
+
 
     /**
      * Firt method called when component is mounted
@@ -21,6 +22,7 @@ class DetailsComponent extends Component
     public function mount($slug)
     {
         $this->slug = $slug;
+        $this->qty = 1;
     }
 
     /**
@@ -33,10 +35,36 @@ class DetailsComponent extends Component
      */
     public function store($product_id, $product_name, $product_price)
     {
-        Cart::add($product_id, $product_name, 1, $product_price)->associate('App\Models\Product');
+
+        Cart::instance('cart')->add($product_id, $product_name, $this->qty, $product_price)->associate('App\Models\Product');
         session()->flash('success', 'Product added to cart!');
-        return redirect()->route('product.cart');
+        return redirect()->route('cart');
     }
+
+
+    /**
+     * Increase the quantity of the product in the cart session
+     *
+     * @return void
+     */
+    public function increaseQuantity()
+    {
+        $this->qty++;
+    }
+
+
+    /**
+     * Decrease the quantity of the product in the cart session
+     *
+     * @return void
+     */
+    public function decreaseQuantity()
+    {
+        if ($this->qty > 1) {
+            $this->qty--;
+        }
+    }
+
 
     /**
      * Render the view
