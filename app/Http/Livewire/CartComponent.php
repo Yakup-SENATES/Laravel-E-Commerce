@@ -69,6 +69,48 @@ class CartComponent extends Component
         session()->flash('success', 'All products has been removed from the cart');
     }
 
+    /**
+     * Switch the cart to the wishlist
+     *
+     * @param  mixed $rowId
+     * @return void
+     */
+    public function switchToSaveForLater($rowId)
+    {
+        $item = Cart::instance('cart')->get($rowId);
+        Cart::instance('cart')->remove($rowId);
+        Cart::instance('saveForLater')->add($item->id, $item->name, 1, $item->price)
+            ->associate('App\Models\Product');
+        $this->emitTo('cart-count-component', 'refreshComponent');
+        session()->flash('success', 'Product has been saved for later');
+    }
+
+    public function moveToCart($rowId)
+    {
+        $item = Cart::instance('saveForLater')->get($rowId);
+        Cart::instance('saveForLater')->remove($rowId);
+        Cart::instance('cart')->add($item->id, $item->name, 1, $item->price)
+            ->associate('App\Models\Product');
+        $this->emitTo('cart-count-component', 'refreshComponent');
+        session()->flash('s_success', 'Product has been moved to cart');
+    }
+
+
+    public function deleteFromSaveForLater($rowId)
+    {
+        Cart::instance('saveForLater')->remove($rowId);
+        $this->emitTo('cart-count-component', 'refreshComponent');
+        session()->flash('s_success', 'Product has been removed from the Save For Later');
+    }
+
+
+
+
+    /**
+     * Render the view
+     *
+     * @return void
+     */
     public function render()
     {
         return view('livewire.cart-component')->layout('layouts.base');

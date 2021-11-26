@@ -12,12 +12,12 @@
         <div class=" main-content-area">
 
             <div class="wrap-iten-in-cart">
-            @if (Session::has('success'))
-            <div class="alert alert-success">
-                <strong>{{ Session::get('success') }}</strong>
-            </div>         
-                
-            @endif
+                @if (Session::has('success'))
+                <div class="alert alert-success">
+                    <strong>{{ Session::get('success') }}</strong>
+                </div>         
+                    
+                @endif
                 @if(Cart::instance('cart')->count() >0)
                 <h3 class="box-title">Products Name</h3>
                 <ul class="products-cart">
@@ -34,10 +34,11 @@
                         <div class="price-field produtc-price"><p class="price">${{$item->model->regular_price}}</p></div>
                         <div class="quantity">
                             <div class="quantity-input">
-                                <input type="text" name="product-quatity" value="{{print($item->model->qty)}}" data-max="120" pattern="[0-9]*" >								
+                                <input type="text" name="product-quatity" value="{{($item->qty)}}" data-max="120" pattern="[0-9]*" >			
                                 <a class="btn btn-increase" href="#" wire:click.prevent="increaseQuantity('{{$item->rowId}}')" ></a>
                                 <a class="btn btn-reduce" href="#" wire:click.prevent="decreaseQuantity('{{$item->rowId}}')"></a>
                             </div>
+                            <p class="text-center"><a href="#" wire:click.prevent="switchToSaveForLater('{{$item->rowId}}')">Save For Later</p>
                         </div>
                         <div class="price-field sub-total"><p class="price">${{$item->subtotal}}</p></div>
                         <div class="delete">
@@ -74,6 +75,48 @@
                     <a class="btn btn-update" href="#">Update Shopping Cart</a>
                 </div>
             </div>
+
+
+            <div class="wrap-iten-in-cart">
+                <h3 class="title-box" style="border-bottom:1px solid ; padding-bottom:15px">{{Cart::instance('saveForLater')->count()}} item(s) Saved For Later</h3>
+                @if (Session::has('s_success'))
+                    <div class="alert alert-success">
+                        <strong>{{ Session::get('s_success') }}</strong>
+                    </div>         
+                        
+              @endif
+                @if(Cart::instance('saveForLater')->count() >0)
+                    <h3 class="box-title">Products Name</h3>
+                    <ul class="products-cart">
+                   
+                   @foreach (Cart::instance('saveForLater')->content() as $item)
+                       
+                        <li class="pr-cart-item">
+                            <div class="product-image">
+                                <figure><img src="{{asset('assets/images/products')}}/{{$item->model->image}}" alt="{{$item->model->name}}"></figure>
+                            </div>
+                            <div class="product-name">
+                                <a class="link-to-product" href="{{ route('product.details', ['slug'=>$item->model->slug]) }}">{{$item->model->name}}</a>
+                            </div>
+                            <div class="price-field produtc-price"><p class="price">${{$item->model->regular_price}}</p></div>
+                            <div class="quantity">
+                               <p class="text-center"><a href="#" wire:click.prevent="moveToCart('{{$item->rowId}}')">Move To Cart</p>
+                            </div>
+                            <div class="delete">
+                                <a href="#" class="btn btn-delete" title="" wire:click.prevent="deleteFromSaveForLater('{{$item->rowId}}')">
+                                    <span>Delete from save for later</span>
+                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </li>
+                    @endforeach										
+                </ul>
+                @else
+                    <p>No Item Saved For Later</p>                    
+                @endif
+            </div>
+
+
 
             <div class="wrap-show-advance-info-box style-1 box-in-site">
                 <h3 class="title-box">Most Viewed Products</h3>
@@ -227,5 +270,6 @@
 
         </div><!--end main content area-->
     </div><!--end container-->
+
 
 </main>

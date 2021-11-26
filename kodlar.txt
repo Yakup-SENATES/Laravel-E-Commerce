@@ -91,3 +91,13 @@ event.stopImmediatePropagation(); Metodu nu silme butonuna basınca çalışacak
 Bu sayede  Silme işleminde direk silmeden önce soracak
 onclick="confirm('Are You Sure, You Wnat To Delete This Category?')|| event.stopImmediatePropagation()"
 ----------------------------------------------------------------------------------------------------
+
+kupon oluşturm aşaması 
+----------------------------------------------------------------------------------------------------
+-->php artisan make:model Coupun -m 
+model tablosuna eklenenlerden sonra migrate ettik 
+şimdide kuponlar için crud viewler lazım
+--> php artisan maek:livewire admin/AdminCouponComponent
+--> php artisan make:livewire admin/AdminAddCouponComponent
+--> php artisan make:livewire admin/AdminEditCouponComponent
+----------------------------------------------------------------------------------------------------
