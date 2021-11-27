@@ -101,3 +101,28 @@ model tablosuna eklenenlerden sonra migrate ettik
 --> php artisan make:livewire admin/AdminAddCouponComponent
 --> php artisan make:livewire admin/AdminEditCouponComponent
 ----------------------------------------------------------------------------------------------------
+
+
+Kupon Expiry Date işlemleri için
+----------------------------------------------------------------------------------------------------
+$ php artisan make:migration add_expiry_date_to_coupons_table 
+	migration yaptık 
+       $table->timestamp('expiry_date')->default(DB::raw('CURRENT_TIMESTAMP'));
+	Değerleri ekledik ve migrate ettik
+----------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**************************************************************************************************************************************************/
+Not : wire:ignore	Instructs Livewire to not update the element or its children when updating the DOM from a server request. Useful when using third-party JavaScript libraries within Livewire components.
+/*************************************************************************************************************************************************/

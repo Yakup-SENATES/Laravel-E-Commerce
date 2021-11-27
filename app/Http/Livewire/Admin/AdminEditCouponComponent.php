@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class AdminEditCouponComponent extends Component
 {
-    public $code, $type, $value, $cart_value, $coupon_id;
+    public $code, $type, $value, $cart_value, $coupon_id, $expiry_date;
 
 
     /**
@@ -36,10 +36,11 @@ class AdminEditCouponComponent extends Component
     public function updated($fields)
     {
         $this->validateOnly($fields, [
-            'code' => 'required|unique:coupons',
+            'code' => 'required',  //|unique:coupons except eklenmeli 
             'type' => 'required',
             'value' => 'required|numeric',
             'cart_value' => 'required',
+            'expiry_date' => 'required',
         ]);
     }
 
@@ -51,16 +52,18 @@ class AdminEditCouponComponent extends Component
     public function updateCoupon()
     {
         $this->validate([
-            'code' => 'required|unique:coupons',
+            'code' => 'required',
             'type' => 'required',
             'value' => 'required|numeric',
             'cart_value' => 'required',
+            'expiry_date' => 'required',
         ]);
         $coupon = Coupon::find($this->coupon_id);
         $coupon->code  = $this->code;
         $coupon->type  = $this->type;
         $coupon->value  = $this->value;
         $coupon->cart_value = $this->cart_value;
+        $coupon->expiry_date = $this->expiry_date;
         $coupon->save();
         session()->flash('message', 'Coupon has been updated successfully');
     }

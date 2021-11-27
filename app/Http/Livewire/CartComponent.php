@@ -3,15 +3,23 @@
 namespace App\Http\Livewire;
 
 use App\Models\Coupon;
+use Carbon\Carbon;
 use Livewire\Component;
 use Cart;
 
 class CartComponent extends Component
 {
-    public $haveCouponCode, $couponCode, $discount, $subtotalAfterDiscount, $taxAfterDiscount, $totalAfterDiscount;
+    public $haveCouponCode,
+        $couponCode,
+        $discount,
+        $subtotalAfterDiscount,
+        $taxAfterDiscount,
+        $totalAfterDiscount;
+
     /**
      * Increase the quantity of the product in the cart
      * Sepetteki ürünün miktarını arttırır.
+     * 
      * @param  mixed $rowId
      * @return void
      */
@@ -124,7 +132,7 @@ class CartComponent extends Component
      */
     public function applyCouponCode()
     {
-        $coupon = Coupon::where('code', $this->couponCode)->where('cart_value', '<=', Cart::instance('cart')->subtotal())->first();
+        $coupon = Coupon::where('code', $this->couponCode)->where('expiry_date', '>=', Carbon::today())->where('cart_value', '<=', Cart::instance('cart')->subtotal())->first();
         if ($coupon) {
             session()->put('coupon', [
                 'code' => $coupon->code,
@@ -159,6 +167,11 @@ class CartComponent extends Component
     }
 
 
+    /**
+     * Remove coupon  
+     *
+     * @return void
+     */
     public function removeCoupon()
     {
         session()->forget('coupon');
