@@ -21,14 +21,14 @@
                                     <th>Id</th>
                                     <th>Coupon Code</th>
                                     <th>Coupon Type</th>
-                                    <th>Coupon Type</th>
+                                    <th>Coupon Value</th>
+                                    <th>Cart Value</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($coupons as $coupon)
                                     <tr>
-                                        <td scope="row">{{$coupon->id}}</td>
                                         <td>{{$coupon->id}}</td>
                                         <td>{{$coupon->code}}</td>
                                         <td>{{$coupon->type}}</td>
