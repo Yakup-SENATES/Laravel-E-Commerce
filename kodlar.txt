@@ -112,6 +112,16 @@ $ php artisan make:migration add_expiry_date_to_coupons_table
 ----------------------------------------------------------------------------------------------------
 
 
+Admin Ckechkout
+----------------------------------------------------------------------------------------------------
+$ php artisan make:model Order -m    
+$ php artisan make:model OrderItem -m
+$ php artisan make:model Shipping -m
+$ php artisan make:model Transaction -m 
+
+----------------------------------------------------------------------------------------------------
+
+
 
 
 
