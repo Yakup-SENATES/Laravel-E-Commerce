@@ -45,7 +45,7 @@ php artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServi
 
 Sepete ekleme işlemi için wire ekledik. ShopComponent.php dosyasında olan store methoduna ulaşmak için ; 
 <a> tagı içerisinde 
-wire::click.prevent="store({{$product_id}}, {{$product_name}}, {{$product_price}})
+wire:click.prevent="store({{$product_id}}, {{$product_name}}, {{$product_price}})
  yazıyoruz. Bu saye tıklanınca store çalıştırmak için. 
 
  @foreach (Cart::content() as $item) cart-component.blade.php dosyasında yazarak modeli olmadan kullandık.
@@ -121,7 +121,7 @@ $ php artisan make:model Transaction -m
 
 ----------------------------------------------------------------------------------------------------
 
-
+Thank you page
 
 
 

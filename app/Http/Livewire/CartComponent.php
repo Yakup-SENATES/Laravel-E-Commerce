@@ -193,8 +193,19 @@ class CartComponent extends Component
         }
     }
 
+    /**
+     * Amount of the cart
+     * Sepetin toplam miktarı
+     *
+     * @return void
+     */
     public function setAmountForCheckout()
     {
+        if (!Cart::instance('cart')->count() > 0) {
+            session()->forget('checkout');
+            return;
+        }
+
         if (session()->has('coupon')) {
             session()->put('checkout', [
                 'subtotal' => $this->subtotalAfterDiscount,
