@@ -122,9 +122,15 @@ $ php artisan make:model Transaction -m
 ----------------------------------------------------------------------------------------------------
 
 Thank you page
+----------------------------------------------------------------------------------------------------
 
-
-
+stripe ayarları
+----------------------------------------------------------------------------------------------------
+--> "cartalyst/stripe-laravel": "^13.0"  comsoper.json dosyasına ekledik
+php composer update kodunu run ettik uygulama dahil edildi 
+docs  için  https://cartalyst.com/manual/stripe-laravel/13.x sitesine bakılabilir
+belirtilen app.php dosyasında stripe kodlarını ekledik.
+----------------------------------------------------------------------------------------------------
 
 
 
