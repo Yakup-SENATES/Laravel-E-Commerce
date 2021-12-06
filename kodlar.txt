@@ -132,6 +132,12 @@ docs  için  https://cartalyst.com/manual/stripe-laravel/13.x sitesine bakılabi
 belirtilen app.php dosyasında stripe kodlarını ekledik.
 ----------------------------------------------------------------------------------------------------
 
+Admin Show order page 	
+----------------------------------------------------------------------------------------------------
+php artisan make:livewire Admin/AdminShowOrderComponent
+----------------------------------------------------------------------------------------------------
+
+
 
 
 
