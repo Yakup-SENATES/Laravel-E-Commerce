@@ -147,7 +147,18 @@ php artisan make:livewire Admin/AdminShowOrderComponent
 
 /**************************************************************************************************************************************************/
 Not : wire:ignore	Instructs Livewire to not update the element or its children when updating the DOM from a server request. Useful when using third-party JavaScript libraries within Livewire components.
+
 Not2 : Admin session a kaydedilmediğinden aktif kullanıcı admin olsa dahi admin yetkilerine erişemiyordu sorunu çözmek için login ardından 
 ana sayfaya yönelendirdiğinden yapıcısına gidip
-  session()->put('utype', Auth::user()['utype']); kodunu ekledik.
+  session()->put('utype', Auth::user()['utype']); kodunu ekledik. 
+[Düzeltme]----> sorun stripe ile alakalı imis. Bunun için gerekli yüklemeleri yaparken composer dosyalarında üzerine yazma yapıyor.
+vendor>laravel>fortify>src>actions>AttempToAuthenticate dosyasında handle metodunun if statement kısımında yaptıklarımızı yeniden yazıyoruz
+if(Auth::user()->utype==='ADM')
+{session(['utype'=>'ADM']);} elseif ..... şeklinde
+
+Yeni sorun. Eğer composer update kodunu çalışacak olursa aynı hata ile karşılaşacağız. İkinci Yol  ;
+AuthAdmin Adında oluşturduğumuz dosyada düzenleme yaptık
+if(session('utype') === 'ADM') şekilde olan kısmı 
+if (Auth::user()->utype === 'ADM') ile değiştirdik 
+
 /*************************************************************************************************************************************************/

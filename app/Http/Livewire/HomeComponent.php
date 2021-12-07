@@ -14,7 +14,7 @@ class HomeComponent extends Component
 {
     public function render()
     {
-        session()->put('utype', Auth::user()['utype']);
+        //session()->put('utype', Auth::user()['utype']);
         //dd(session('utype'));
 
         $sliders = HomeSlider::where('status', 1)->get();
