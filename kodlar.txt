@@ -147,4 +147,7 @@ php artisan make:livewire Admin/AdminShowOrderComponent
 
 /**************************************************************************************************************************************************/
 Not : wire:ignore	Instructs Livewire to not update the element or its children when updating the DOM from a server request. Useful when using third-party JavaScript libraries within Livewire components.
+Not2 : Admin session a kaydedilmediğinden aktif kullanıcı admin olsa dahi admin yetkilerine erişemiyordu sorunu çözmek için login ardından 
+ana sayfaya yönelendirdiğinden yapıcısına gidip
+  session()->put('utype', Auth::user()['utype']); kodunu ekledik.
 /*************************************************************************************************************************************************/
