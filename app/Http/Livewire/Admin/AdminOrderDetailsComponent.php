@@ -11,7 +11,7 @@ class AdminOrderDetailsComponent extends Component
 
 
     /**
-     * Mount 
+     * Mount  component
      *
      * @param  mixed $order_id
      * @return void

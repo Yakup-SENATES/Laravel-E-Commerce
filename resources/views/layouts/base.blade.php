@@ -120,6 +120,9 @@
 													<li class="menu-item" >
 														<a title="Dashboard" href="{{ route('user.dashboard') }}">Dashboard</a>
 													</li>
+													<li class="menu-item" >
+														<a title="Orders" href="{{ route('user.orders') }}">Orders</a>
+													</li>
 														<li class="menu-item">
 															<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout_id').submit(); ">Logout</a>
 														</li>		
