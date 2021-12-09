@@ -17,6 +17,9 @@
                         All Orders
                     </div>
                     <div class="panel panel-body">
+                        @if (Session::has('order_message'))
+                            <div class="alert alert-success" role="alert">{{ Session::get('order_message') }}</div>                            
+                        @endif
                         <table class="table yable-striped">
                             <thead>
                                 <tr>
@@ -32,7 +35,7 @@
                                     <th>Zip Code</th>
                                     <th>Status</th>
                                     <th>Order Date</th>
-                                    <th>Action</th>
+                                    <th colspan="2" class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,6 +54,17 @@
                                         <td>{{$order->status}}</td>
                                         <td>{{$order->created_at}}</td>
                                         <td><a href="{{ route('admin.order.details', ['order_id'=>$order->id]) }}" class="btn btn-info btn-sm">Details</a></td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-successs btn-sm dropdown-toggle" data-toggle="dropdown">Status <span class="caret"></span></button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a href="#" wire:click.prevent="updateOrderStatus({{$order->id}},'delivered')" >Delivered</a>
+                                                        <a href="#" wire:click.prevent="updateOrderStatus({{$order->id}}, 'canceled')">Canceled</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

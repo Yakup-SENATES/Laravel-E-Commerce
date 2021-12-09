@@ -37,7 +37,7 @@ class AdminEditCategoryComponent extends Component
         $this->slug = Str::slug($this->name);
     }
 
-    public function updated()
+    public function updated($fields)
     {
         $this->validateOnly($fields, [
             'name' => 'required|min:3|max:255',
