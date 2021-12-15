@@ -5,6 +5,7 @@ use App\Http\Livewire\Admin\AdminAddCouponComponent;
 use App\Http\Livewire\Admin\AdminAddHomeSliderComponent;
 use App\Http\Livewire\Admin\AdminAddProductComponent;
 use App\Http\Livewire\Admin\AdminCategoryComponent;
+use App\Http\Livewire\Admin\AdminContactComponent;
 use App\Http\Livewire\Admin\AdminCouponsComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminEditCategoryComponent;
@@ -26,6 +27,7 @@ use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\ShopComponent;
 use App\Http\Livewire\ThankyouComponent;
+use App\Http\Livewire\User\UserChangePasswordComponent;
 use App\Http\Livewire\User\UserDashboardComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
@@ -66,6 +68,7 @@ Route::get('/search', SearchComponent::class)->name('product.search');
 
 Route::get('/wishlist', WishlistComponent::class)->name('wishlist');
 Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
+Route::get('/contact-us', ContactComponent::class)->name('contact');
 
 
 //Route::get('/category/{slug}', ShopComponent::class)->name('category.products');
@@ -81,6 +84,7 @@ Route::prefix('user')->middleware(['auth:sanctum', 'verified'])->group(function 
 	Route::get('/orders', UserOrdersComponent::class)->name('user.orders');
 	Route::get('/order/{order_id}', UserOrderDetailsComponent::class)->name('user.order.details');
 	Route::get('/review/{order_item_id}', UserReviewComponent::class)->name('user.review');
+	Route::get('/change-password', UserChangePasswordComponent::class)->name('user.changePassword');
 });
 
 //for admin
@@ -103,4 +107,5 @@ Route::prefix('admin')->middleware(['auth:sanctum', 'verified', 'auth_admin'])->
 	Route::get('/coupons/edit/{coupon_id}', AdminEditCouponComponent::class)->name('admin.edit.coupon');
 	Route::get('/orders', AdminOrderComponent::class)->name('admin.orders');
 	Route::get('/orders/{order_id}', AdminOrderDetailsComponent::class)->name('admin.order.details');
+	Route::get('/contact-us', AdminContactComponent::class)->name('admin.contact');
 });

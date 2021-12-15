@@ -104,6 +104,10 @@
 														<a title="Show Orders" href="{{route('admin.orders')}}">Show Orders</a>
 													</li>
 													
+													<li class="menu-item">
+														<a title="Contact Messages" href="{{route('admin.contact')}}">Contact Messages</a>
+													</li>
+													
 													
 													<li class="menu-item">
 														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout_id').submit(); ">Logout</a>
@@ -122,6 +126,9 @@
 													</li>
 													<li class="menu-item" >
 														<a title="Orders" href="{{ route('user.orders') }}">Orders</a>
+													</li>
+													<li class="menu-item" >
+														<a title="Change Password" href="{{ route('user.changePassword') }}">Change Password</a>
 													</li>
 														<li class="menu-item">
 															<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout_id').submit(); ">Logout</a>

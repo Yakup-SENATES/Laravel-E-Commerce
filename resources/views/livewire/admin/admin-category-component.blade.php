@@ -3,7 +3,7 @@
         nav svg{
             height: 20px
         }
-        nav .hidden{
+        nav.hidden{
             display: block !important;
         }
     </style>
