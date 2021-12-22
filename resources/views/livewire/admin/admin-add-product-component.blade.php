@@ -113,19 +113,35 @@
                                 @enderror
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label for="" class="col-md-4 control-label">Product Image</label>
                         <div class="col-md-4">
                             <input type="file"class="input-file" wire:model="image"/>
                             @if ($image)
-                                <img src="{{$image->temporaryUrl()}}" width="120">
-                                
+                                <img src="{{$image->temporaryUrl()}}" width="120"/>                                
                             @endif
                             @error('image')
                                 <span class="text-danger">{{ $message }}</span>
+                             @enderror
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="" class="col-md-4 control-label">Product Gallery</label>
+                        <div class="col-md-4">
+                            <input type="file"class="input-file" wire:model="images" multiple />
+                                @if ($images)
+                                    @foreach ($images as $image)
+                                    <img src="{{$image->temporaryUrl()}}" width="120" />                                
+                                    @endforeach
+                                 @endif
+                                @error('images')
+                                    <span class="text-danger">{{ $message }}</span>
                                 @enderror
                         </div>
                     </div>
+                    
                     <div class="form-group">
                         <label for="" class="col-md-4 control-label">Category</label>
                         <div class="col-md-4">

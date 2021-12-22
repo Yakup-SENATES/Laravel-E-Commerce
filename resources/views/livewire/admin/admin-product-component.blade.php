@@ -1,13 +1,4 @@
 <div>
-    <style>
-        nav svg{
-            height: 20px
-        }
-        nav.hidden{
-            display: block !important;
-        }
-    </style>
-
         <div class="container" style="padding:30px 0;">
             <div class="row">
                 <div class="col-md-12">
@@ -47,7 +38,7 @@
                                             <td>{{$product->stock_status}}</td>
                                             <td>{{$product->regular_price}}</td>
                                             <td>{{$product->sale_price}}</td>
-                                            <td>{{$product->getCategory->name}}</td>
+                                            <td>{{$product->category->name ?? 'seçilmemiş'}}</td>
                                             <td>{{$product->created_at}}</td>
                                             <td><a href="{{ route('admin.products.edit', ['product_slug'=>$product->slug]) }}"><i class="fa fa-edit fa-2x text-info"></i></a>
                                             <a style="margin-left:14px;" onclick="confirm('Are You Sure, You Want To Delete?') ||event.stopImmediatePropagation() " wire:click.prevent="delete({{$product->id}})"><i class="fa fa-trash fa-2x text-danger"></i></a>

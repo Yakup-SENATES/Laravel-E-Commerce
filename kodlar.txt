@@ -173,4 +173,10 @@ AuthAdmin Adında oluşturduğumuz dosyada düzenleme yaptık
 if(session('utype') === 'ADM') şekilde olan kısmı 
 if (Auth::user()->utype === 'ADM') ile değiştirdik 
 
+			HATA!!! 
+Admin-product-component.blade sayfasında <td>{{$product->category->name}}</td>
+Şeklinde yazım yaptığımızda Attempt to read property 'name' on null hatası alıyordum. 
+Bu hata Categorisi seçilmemiş ürünlerden kaynaklanıyordu.
+---->Çozüm 
+---------><td>{{$product->category->name ?? 'seçilmemiş'}}</td>  boş ise değer vermek 
 /*************************************************************************************************************************************************/
