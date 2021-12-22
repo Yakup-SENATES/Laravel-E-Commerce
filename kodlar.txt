@@ -151,6 +151,15 @@ Admin Setings implementation
 php artisan make:livewire FooterComponent
 --> footer-component içine base direktorysinden footer sectionunu kesip yapıştırdık.
 -->base.blade.php dosyasında footer için @livewire('footer-component')'i ekledik. 
+
+----------------------------------------------------------------------------------------------------
+
+Password Reset 
+----------------------------------------------------------------------------------------------------
+.env içierisinde
+Mail Kısımlarına ilgili ayarlar yazıldı password kısmına google uygulama passwordu oluşturup ekledik.
+https://security.google.com/settings/security/apppasswords
+sorun çözüldü mail başarıyla geldi
 ----------------------------------------------------------------------------------------------------
 
 
