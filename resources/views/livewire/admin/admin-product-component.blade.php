@@ -26,7 +26,7 @@
                                         <th>Sale Price</th>
                                         <th>Category</th>
                                         <th>Date</th>
-                                        <th>Action</th>
+                                        <th colspan="2" class="text-center">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
