@@ -182,10 +182,22 @@ AuthAdmin Adında oluşturduğumuz dosyada düzenleme yaptık
 if(session('utype') === 'ADM') şekilde olan kısmı 
 if (Auth::user()->utype === 'ADM') ile değiştirdik 
 
-			HATA!!! 
+++++ HATA!!! +++++
 Admin-product-component.blade sayfasında <td>{{$product->category->name}}</td>
 Şeklinde yazım yaptığımızda Attempt to read property 'name' on null hatası alıyordum. 
 Bu hata Categorisi seçilmemiş ürünlerden kaynaklanıyordu.
 ---->Çozüm 
 ---------><td>{{$product->category->name ?? 'seçilmemiş'}}</td>  boş ise değer vermek 
-/*************************************************************************************************************************************************/
+
++++ Hata !!! ++++ 
+Login Page De Search bar ve wishlist cart sekmeleri çalışmıyordu.
+çözmek için 
+add>View>Components Klasörüne BaseLayout.php adında dosya oluşturduk içeriği guestLayout 
+dan aldık. Ardından render metoduna return view('layouts.base')  ekledik.
+sonrasında login, register, forgot pass, gibi sayfalarda 
+  		<x-guest-layout>  
+Şeklinde olan kısımları 
+		<x-base-layout>
+Şeklinde ayarladık
+/**********************************************************************************************
+**********************************************************************************************/

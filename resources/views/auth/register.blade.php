@@ -59,7 +59,7 @@
     </x-jet-authentication-card>
 </x-guest-layout>--}}
 
-<x-guest-layout>
+<x-base-layout>
 
     
 	
@@ -118,4 +118,4 @@
 	</main>
 	
 
-</x-guest-layout>
+</x-base-layout>

@@ -25,7 +25,9 @@ class AdminEditProductComponent extends Component
         $image,
         $category_id,
         $newImage,
-        $product_id;
+        $product_id,
+        $images,
+        $newImages;
 
 
     /**
@@ -49,6 +51,7 @@ class AdminEditProductComponent extends Component
         $this->featured = $product->featured;
         $this->quantity = $product->quantity;
         $this->image = $product->image;
+        $this->images = explode(",", $product->images);
         $this->category_id = $product->category_id;
         $this->product_id = $product->id;
     }
@@ -66,8 +69,8 @@ class AdminEditProductComponent extends Component
     public function updated($fields)
     {
         $this->validateOnly($fields, [
-            'name' => 'required|min:3',
-            'slug' => 'required|min:3|unique:products',
+            'name' => 'required',
+            'slug' => 'required',
             'short_description' => 'required|min:3',
             'description' => 'required|min:3',
             'regular_price' => 'required|numeric',
@@ -75,9 +78,14 @@ class AdminEditProductComponent extends Component
             'SKU' => 'required',
             'stock_status' => 'required',
             'quantity' => 'required|numeric',
-            'newImage' => 'required|mimes:jpeg,png,jpg',
             'category_id' => 'required',
         ]);
+
+        if ($this->newImage) {
+            $this->validateOnly($fields, [
+                'newImage' => 'required|mimes:jpeg,png,jpg',
+            ]);
+        }
     }
 
     /**
@@ -89,7 +97,7 @@ class AdminEditProductComponent extends Component
     {
         $this->validate([
             'name' => 'required|min:3',
-            'slug' => 'required|min:3|unique:products',
+            'slug' => 'required|min:3',
             'short_description' => 'required|min:3',
             'description' => 'required|min:3',
             'regular_price' => 'required|numeric',
@@ -101,6 +109,12 @@ class AdminEditProductComponent extends Component
             'category_id' => 'required',
         ]);
 
+
+        if ($this->newImage) {
+            $this->validate([
+                'newImage' => 'required|mimes:jpeg,png,jpg',
+            ]);
+        }
 
 
         $product = Product::find($this->product_id);
@@ -115,10 +129,33 @@ class AdminEditProductComponent extends Component
         $product->stock_status = $this->stock_status;
         $product->featured = $this->featured;
         $product->quantity = $this->quantity;
+
         if ($this->newImage) {
+
+            unlink('assets/images/products' . '/' . $product->image);
             $imageName = Carbon::now()->timestamp . '.' . $this->newImage->extension();
-            $this->image->storeAs('products', $imageName);
+            $this->newImage->storeAs('products', $imageName);
             $product->image = $newImage;
+        }
+        if ($this->newImages) {
+            if ($product->images) {
+                $images = explode(",", $product->images);
+
+                foreach ($images as $image) {
+                    if ($image) {
+                        unlink('assets/images/products' . '/' . $image);
+                    }
+                }
+            }
+
+            $imagesName = '';
+            foreach ($this->newImages as $key => $image) {
+                $imgName = Carbon::now()->timestamp . $key .  '.' . $image->extension();
+                $image->storeAs('products', $imgName);
+                $imagesName = $imagesName . ',' . $imgName;
+            }
+
+            $product->images = $imagesName;
         }
         $product->category_id = $this->category_id;
         $product->save();
