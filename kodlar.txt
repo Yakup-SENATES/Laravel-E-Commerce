@@ -164,9 +164,18 @@ sorun çözüldü mail başarıyla geldi
 
 Send Order Mail Confirmation email
 ----------------------------------------------------------------------------------------------------
-php artisan make:mail OrderConfirmationMail
+php artisan make:mail OrderConfirmationMail 
+mails>order-confirmation.blade.php dosyasını oluşturduk. standart mesajları yazdık
+OrderConfirmationMail.php dosyasının içerisinde return $this->subject('Order Confirmation')->view('mails.order-confirmation'); 
+düzenlemesini yaptık.
+Checkout.php dosyasının içerisinde sendOrderConfirmationMail($order) metodunu ekledik.
+bu metodu placeOrder() metodundan çağırdık. Sipariş bitince mail atacak şekilde.
 ----------------------------------------------------------------------------------------------------
 
+Shoppingcart Using DBs
+----------------------------------------------------------------------------------------------------
+php artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServiceProvider" --tag="migrations"
+----------------------------------------------------------------------------------------------------
 
 
 

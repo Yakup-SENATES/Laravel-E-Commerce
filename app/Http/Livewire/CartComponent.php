@@ -238,6 +238,13 @@ class CartComponent extends Component
             }
         }
         $this->setAmountForCheckout();
+
+        //oturum açılmış kullanıcı varsa ve sepeti boş değilse
+        //sepeti database e kaydediyoruz.
+
+        if (Auth::check()) {
+            Cart::instance('cart')->store(Auth::user()->email);
+        }
         return view('livewire.cart-component')->layout('layouts.base');
     }
 }
