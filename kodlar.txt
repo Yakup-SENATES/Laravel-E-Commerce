@@ -184,6 +184,20 @@ Route::get('/categories/edit/{category_slug}/{scategory_slug?} ..... Şekline ge
 opsiyonel parametre için ? kullanılıyor.
 ----------------------------------------------------------------------------------------------------
 
+Show Products by Subcategory
+----------------------------------------------------------------------------------------------------
+$ php artisan make:migration add_subcategory_id_to_products_table --table=products
+subcategory eklendi products tablosuna ve migrate edildi
+web.php dosyasında opsiyonel route ekledik.
+Route::get('/product-category/{category_slug}/{scategory_slug?}'...) bu route ile product-category sayfasına gidilir.
+Product.php dosyasına subcategoryleri getirmek için relationship ekledik.
+	public function subCategories()
+		{
+			return  $this->belongsTo(Category::class, 'subcategory_id');
+	    }
+
+----------------------------------------------------------------------------------------------------
+
 
 
 

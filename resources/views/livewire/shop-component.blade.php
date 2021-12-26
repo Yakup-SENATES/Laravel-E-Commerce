@@ -135,13 +135,13 @@
 										@if (count($category->subCategories)>0)
 											<span class="toggle-control">+</span>
 											<ul class="sub-cate">
-												@foreach ($category->subCategories as $subCategory)
-													<li class="category-item">
-														<a href="#" class="cat-link"> <i class="fa fa-caret-right"></i>
-															{{$subCategory->name}}
-														</a>
-													</li>												
-												@endforeach
+											@foreach ($category->subCategories as $subCategory)
+												<li class="category-item">
+													<a href="{{ route('product.category', ['category_slug'=>$category->slug ,'scategory_slug'=>$subCategory->slug]) }}" class="cat-link"> <i class="fa fa-caret-right"></i>
+													{{$subCategory->name}}
+													</a>
+												</li>												
+											@endforeach
 											</ul>
 										@endif						
 									</li>

@@ -23,4 +23,9 @@ class Product extends Model
     {
         return  $this->belongsTo(Category::class, 'category_id');
     }
+
+    public function subCategories()
+    {
+        return  $this->belongsTo(Category::class, 'subcategory_id');
+    }
 }

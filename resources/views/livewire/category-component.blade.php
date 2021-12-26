@@ -94,15 +94,28 @@
 
 				<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 sitebar">
 					<div class="widget mercado-widget categories-widget">
-						<h2 class="widget-title">All Categories</h2>
+						<h2 class="widget-title">All Categories</h2>					
 						<div class="widget-content">
 							<ul class="list-category">
+								{{--Sub Category varmı yokmu diye kontrol ediliyor--}}
 								@foreach ($categories as $category)
-
-									<li class="category-item has-child-cate">
-										<a href="{{ route('product.category', ['category_slug'=>$category->slug]) }}" class="cate-link">{{$category->name}}</a>								
+									<li class="category-item {{count($category->subCategories)>0 ? 'has-child-cate':''}} ">
+										<a href="{{ route('product.category', ['category_slug'=>$category->slug]) }}" class="cate-link">{{$category->name}}</a>		
+										@if (count($category->subCategories)>0)
+											<span class="toggle-control">+</span>
+											<ul class="sub-cate">
+											@foreach ($category->subCategories as $subCategory)
+												<li class="category-item">
+													<a href="{{ route('product.category', ['category_slug'=>$category->slug ,'scategory_slug'=>$subCategory->slug]) }}" class="cat-link"> <i class="fa fa-caret-right"></i>
+													{{$subCategory->name}}
+													</a>
+												</li>												
+											@endforeach
+											</ul>
+										@endif						
 									</li>
 								@endforeach							
+								
 							</ul>
 						</div>
 					</div><!-- Categories widget-->
