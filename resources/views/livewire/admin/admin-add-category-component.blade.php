@@ -33,12 +33,25 @@
                             <div class="form-group">
                                 <label for="" class="col-md-4 control-label">Category Slug</label>
                                     <div class="col-md-4">
-                                    <input type="text" placeholder="Category Name" class="form-control input-md" wire:model="slug"> 
+                                    <input type="text" placeholder="Category Slug" class="form-control input-md" wire:model="slug"> 
                                     @error('slug')
                                         <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
                             </div>
+                            
+                            <div class="form-group">
+                                <label for="" class="col-md-4 control-label">Parent Category</label>
+                                    <div class="col-md-4">
+                                        <select class="form-control input-md" wire:model="category_id">
+                                            <option value="" wire:ignore >Select Parent Category</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                            </div>
+
                             <div class="form-group">
                                 <label for="" class="col-md-4 control-label"></label>
                                     <div class="col-md-4">
