@@ -177,6 +177,13 @@ Shoppingcart Using DBs
 php artisan vendor:publish --provider="Gloudemans\Shoppingcart\ShoppingcartServiceProvider" --tag="migrations"
 ----------------------------------------------------------------------------------------------------
 
+Admin Edit Subcategory
+----------------------------------------------------------------------------------------------------
+web.php dosyasında categories/edit routuna opsiyonel bir parametre ekledik.
+Route::get('/categories/edit/{category_slug}/{scategory_slug?} ..... Şekline geldi. 
+opsiyonel parametre için ? kullanılıyor.
+----------------------------------------------------------------------------------------------------
+
 
 
 
