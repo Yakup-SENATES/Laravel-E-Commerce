@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\OrderConfirmationMail;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Transaction;
@@ -9,6 +10,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Cart;
 use Exception;
+use Illuminate\Support\Facades\Mail;
 use Stripe;
 
 class CheckoutComponent extends Component
@@ -90,7 +92,9 @@ class CheckoutComponent extends Component
 
     /**
      * Place order
-     * siparişi yapar
+     * siparişi yapar tipine göre ödemesni yapar
+     * paypal seçildiyse
+     * stripe ile ödeme yapar
      *
      * @return void
      */
@@ -244,9 +248,15 @@ class CheckoutComponent extends Component
                 $this->thankyou = 0;
             }
         }
+        $this->sendOrderConfirmationMail($order);
     }
 
 
+    /**
+     * Reset Cart
+     *
+     * @return void
+     */
     public function resetCart()
     {
         $this->thankyou = 1;
@@ -258,6 +268,14 @@ class CheckoutComponent extends Component
 
 
 
+    /**
+     * Make the transaction
+     * T
+     *
+     * @param  mixed $order_id
+     * @param  mixed $status
+     * @return void
+     */
     public function makeTransaction($order_id, $status)
     {
         $transaction = new Transaction();
@@ -268,6 +286,17 @@ class CheckoutComponent extends Component
         $transaction->save();
     }
 
+
+    /**
+     * Send Order Confirmation Email
+     *
+     * @param  mixed $order
+     * @return void
+     */
+    public function sendOrderConfirmationMail($order)
+    {
+        Mail::to($order->email)->send(new OrderConfirmationMail($order));
+    }
 
     /**
      * Verify user
