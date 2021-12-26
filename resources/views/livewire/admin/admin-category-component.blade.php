@@ -9,6 +9,15 @@
         .sclist{
             list-style: none;
         }
+        .sclist li{
+            line-height: 33px;
+            border-bottom: 1px solid #ccc;
+            margin-right: 10px;
+        }
+        .slink{
+            font-size: 17px;
+            padding-left: 12px;
+        }
     </style>
 
         <div class="container" style="padding:30px 0;">
@@ -49,8 +58,12 @@
                                                     @foreach ($category->subcategories as $s_category)
                                                         <li>
                                                             <i class="fa fa-caret-right"></i> {{$s_category->name}} 
-                                                            <a href="{{ route('admin.categories.edit', ['category_slug'=>$category->slug,'scategory_slug'=>$s_category->slug]) }}">
-                                                            <i class="fa fa-edit"></i>
+                                                            <a href="{{ route('admin.categories.edit', ['category_slug'=>$category->slug,'scategory_slug'=>$s_category->slug]) }}" class="slink">
+                                                            <i class="fa fa-edit"> </i>
+                                                            </a>
+                                                            
+                                                            <a href="#" onclick="confirm('Are You Sure To Delete This Sub Category') ||event.stopImmediatePropagation()" wire:click.prevent="deleteSubCategory({{$s_category->id}})" class="slink">
+                                                                <i class="fa fa-trash text-danger"></i>
                                                             </a>
                                                         </li>
                                                     @endforeach

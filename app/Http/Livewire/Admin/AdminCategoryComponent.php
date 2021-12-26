@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin;
 
 use App\Models\Category;
+use App\Models\Subcategory;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -22,6 +23,20 @@ class AdminCategoryComponent extends Component
         $category->delete();
         session()->flash('message', 'Category Deleted Successfully');
     }
+
+    /**
+     * Delete Subcategory by id
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function deleteSubCategory($id)
+    {
+        $subCategory = Subcategory::findOrFail($id);
+        $subCategory->delete();
+        session()->flash('message', 'Sub Category Deleted Successfully');
+    }
+
 
     public function render()
     {
