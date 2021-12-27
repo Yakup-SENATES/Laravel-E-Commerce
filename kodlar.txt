@@ -198,6 +198,19 @@ Product.php dosyasına subcategoryleri getirmek için relationship ekledik.
 
 ----------------------------------------------------------------------------------------------------
 
+Pofile Page
+----------------------------------------------------------------------------------------------------
+--->php artisan make:migration Pofile -m
+
+Ardindan create_profile_tables de özellikler ekledik.
+User Tablosunda hasOne dönderen fonksiyon yazıldı.
+Migrate edildi. Ardından livewire component gerekli.
+
+--->php artisan make:livewire user/userProfileComponent
+Route ekledik.
+
+----------------------------------------------------------------------------------------------------
+
 
 
 

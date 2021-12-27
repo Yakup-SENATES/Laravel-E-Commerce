@@ -131,6 +131,11 @@
 													<li class="menu-item" >
 														<a title="Orders" href="{{ route('user.orders') }}">Orders</a>
 													</li>
+													
+													<li class="menu-item" >
+														<a title="Profile" href="{{ route('user.profile') }}">Profile</a>
+													</li>
+													
 													<li class="menu-item" >
 														<a title="Change Password" href="{{ route('user.changePassword') }}">Change Password</a>
 													</li>
