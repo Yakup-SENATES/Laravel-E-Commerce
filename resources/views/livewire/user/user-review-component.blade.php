@@ -11,11 +11,11 @@
                         <ol class="commentlist">
                             <li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="li-comment-20">
                                 <div id="comment-20" class="comment_container"> 
-                                    <img alt="" src="{{asset('assets/images/products')}}/{{$order_item->product->image}}" height="80" width="80">
+                                    <img alt="" src="{{asset('assets/images/products')}}/{{$orderItem->product->image}}" height="80" width="80">
                                     <div class="comment-text">
                                         
                                         <p class="meta"> 
-                                            <strong class="woocommerce-review__author">{{$order_item->product->name}}</strong> 
+                                            <strong class="woocommerce-review__author">{{$orderItem->product->name}}</strong> 
                                         </p>                                       
                                     </div>
                                 </div>

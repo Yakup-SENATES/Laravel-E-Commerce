@@ -147,12 +147,12 @@ class CheckoutComponent extends Component
         $order->save();
 
         foreach (Cart::instance('cart')->content() as $item) {
-            $order_item = new OrderItem();
-            $order_item->product_id = $item->id;
-            $order_item->order_id = $order->id;
-            $order_item->price = $item->price;
-            $order_item->quantity = $item->qty;
-            $order_item->save();
+            $orderItem = new OrderItem();
+            $orderItem->product_id = $item->id;
+            $orderItem->order_id = $order->id;
+            $orderItem->price = $item->price;
+            $orderItem->quantity = $item->qty;
+            $orderItem->save();
         }
 
         if ($this->ship_to_different) {

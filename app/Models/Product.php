@@ -24,6 +24,23 @@ class Product extends Model
         return  $this->belongsTo(Category::class, 'category_id');
     }
 
+    /**
+     * Order has many OrderItems
+     *
+     * @return void
+     */
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+
+    /**
+     * Its a one to many relationship.
+     * The subcategory_id is the foreign key.
+     *
+     * @return void
+     */
     public function subCategories()
     {
         return  $this->belongsTo(Category::class, 'subcategory_id');

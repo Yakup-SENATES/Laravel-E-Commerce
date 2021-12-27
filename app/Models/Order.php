@@ -16,7 +16,7 @@ class Order extends Model
      *
      * @return void
      */
-    public function getUser()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

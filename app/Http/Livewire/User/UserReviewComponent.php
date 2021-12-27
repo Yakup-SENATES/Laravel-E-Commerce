@@ -47,11 +47,11 @@ class UserReviewComponent extends Component
         $review = new Review();
         $review->rating = $this->rating;
         $review->comment = $this->comment;
-        $review->order_item_id = $this->order_item_id;
+        //$review->order_item_id = $this->order_item_id;
         $review->save();
-        $order_item = OrderItem::find($this->order_item_id);
-        $order_item->rstatus = true;
-        $order_item->save();
+        $orderItem = OrderItem::find($this->order_item_id);
+        $orderItem->rstatus = true;
+        $orderItem->save();
         session()->flash('success', 'Review added successfully');
     }
 
@@ -65,8 +65,8 @@ class UserReviewComponent extends Component
      */
     public function render()
     {
-        $order_item = OrderItem::find($this->order_item_id);
+        $orderItem = OrderItem::find($this->order_item_id);
 
-        return view('livewire.user.user-review-component', compact('order_item'))->layout('layouts.base');
+        return view('livewire.user.user-review-component', compact('orderItem'))->layout('layouts.base');
     }
 }

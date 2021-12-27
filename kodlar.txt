@@ -247,5 +247,13 @@ sonrasında login, register, forgot pass, gibi sayfalarda
 Şeklinde olan kısımları 
 		<x-base-layout>
 Şeklinde ayarladık
+
+
+++++ HATA !!! +++++
+product.php dosyasının içine orderItems() relational function u yazmadığımızdan dolayı
+details page de @foreach ($product->orderItems->where('rstatus', 1) as $orderItem)
+sorgusunu çalıştırınca hata alıyorduk. 
+call to member function where() on null hatası alıyordum.
+
 /**********************************************************************************************
 **********************************************************************************************/
