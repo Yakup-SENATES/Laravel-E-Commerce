@@ -8,6 +8,13 @@ use Livewire\Component;
 
 class UserProfileComponent extends Component
 {
+
+
+    /**
+     * Render the component.
+     *
+     * @return void
+     */
     public function render()
     {
         $userProfile = Profile::where('user_id', auth()->user()->id)->first();
@@ -18,6 +25,7 @@ class UserProfileComponent extends Component
         }
 
         $user = User::find(auth()->user()->id);
+        //dd($user->profile);
         return view('livewire.user.user-profile-component', compact('user'))->layout('layouts.base');
     }
 }
