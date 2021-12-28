@@ -5,9 +5,14 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                           <div class="row">
-                              <div class="col-md-6">All Products</div>
-                              <div class="col-md-6">
+                              <div class="col-md-4">
+                                  All Products
+                              </div>
+                              <div class="col-md-4">
                                   <a href="{{ route('admin.products.add') }}" class="btn btn-success pull-right">Add New</a>
+                              </div>
+                              <div class="col-md-4">
+                                  <input type="text" class="form-control" placeholder="Search..." wire:model="searchTerm">
                               </div>
                           </div>
                         </div>     
