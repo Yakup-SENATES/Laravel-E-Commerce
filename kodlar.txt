@@ -262,5 +262,10 @@ details page de @foreach ($product->orderItems->where('rstatus', 1) as $orderIte
 sorgusunu çalıştırınca hata alıyorduk. 
 call to member function where() on null hatası alıyordum.
 
+
+++++ HATA !!! +++++
+create_attribute_values migrationunda foreign key constraint are incompacable 
+hatası alıyorduk product tablosunda id değerini int yapmak zorunda kaldım
+
 /**********************************************************************************************
 **********************************************************************************************/

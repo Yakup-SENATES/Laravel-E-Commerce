@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\AttributeValue;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductAttribute;
 use App\Models\Subcategory;
 use Carbon\Carbon;
 use Livewire\Component;
@@ -25,7 +27,8 @@ class AdminAddProductComponent extends Component
         $quantity,
         $image,
         $category_id,
-        $images, $scategory_id;
+        $images, $scategory_id,
+        $attr, $inputs = [], $attribute_arr = [], $attribute_values;
 
 
     /**
@@ -38,6 +41,42 @@ class AdminAddProductComponent extends Component
         $this->stock_status = 'instock';
         $this->featured = 0;
     }
+
+
+    /**
+     * kullanıcının seçtiği attribute başlığı $attr elemanına atanır. 
+     * $attr elemanı $attribute_arr dizisinde yoksa 
+     * array_push metoduyla bu $attr elemanı önce inputs dizisine atanır
+     * sonra attribute_arr metoduna da atanır .
+     * inputs dizisi seçilen attribute ismini yeni açılacak
+     *  HTML-input alanında hangi alan hangi attribute e ait olacak 
+     * anlaşılması için kullanıldı.
+     * açılan HTML-Input alanının içine yazılan Attibute specific değeri 
+     *$attribute_values elemanına verilir böylece kayıt işlemi bu değer ile yapılır
+     *
+     * @return void
+     */
+    public function addAttribute()
+    {
+        if (!in_array($this->attr, $this->attribute_arr)) {
+
+            array_push($this->inputs, $this->attr);
+            array_push($this->attribute_arr, $this->attr);
+        }
+    }
+
+
+    /**
+     * Remove The Attribute 
+     *
+     * @param  mixed $attr
+     * @return void
+     */
+    public function removeAttr($attr)
+    {
+        unset($this->inputs[$attr]);
+    }
+
 
     /**
      * Generate a unique slug for the product.
@@ -124,6 +163,23 @@ class AdminAddProductComponent extends Component
             $product->subcategory_id = $this->scategory_id;
         }
         $product->save();
+
+        //Attribute kaydedilen alan
+
+        foreach ($this->attribute_values as $key => $attribute_value) {
+
+            $avalues = explode(",", $attribute_value);
+
+            foreach ($avalues as $avalue) {
+
+                $attr_value = new AttributeValue();
+                $attr_value->product_attribute_id = $key;
+                $attr_value->value = $avalue;
+                $attr_value->product_id =  $product->id;
+                $attr_value->save();
+            }
+        }
+
         session()->flash('message', 'Product added successfully');
     }
 
@@ -147,6 +203,9 @@ class AdminAddProductComponent extends Component
     {
         $scategories = Subcategory::where('category_id', $this->category_id)->get();
         $categories = Category::all();
-        return view('livewire.admin.admin-add-product-component', compact('categories', 'scategories'))->layout('layouts.base');
+
+        $pattributes = ProductAttribute::all();
+
+        return view('livewire.admin.admin-add-product-component', compact('categories', 'scategories', 'pattributes'))->layout('layouts.base');
     }
 }

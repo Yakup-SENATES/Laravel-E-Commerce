@@ -13,7 +13,7 @@
 
             @if (Cart::instance('cart')->count() > 0 )      
 
-                <div class="wrap-iten-in-cart">
+                <div class="wrap-iten-in-cart">                    
                     @if (Session::has('success'))
                     <div class="alert alert-success">
                         <strong>{{ Session::get('success') }}</strong>
@@ -23,17 +23,17 @@
                     @if(Cart::instance('cart')->count() >0)
                     <h3 class="box-title">Products Name</h3>
                     <ul class="products-cart">
-                    
+                
                     @foreach (Cart::instance('cart')->content() as $item)
                         
                         <li class="pr-cart-item">
                             <div class="product-image">
                                 <figure><img src="{{asset('assets/images/products')}}/{{$item->model->image}}" alt="{{$item->model->name}}"></figure>
                             </div>
-                            <div class="product-name">
+                            <div class="product-name col-md-6">
                                 <a class="link-to-product" href="{{ route('product.details', ['slug'=>$item->model->slug]) }}">{{$item->model->name}}</a>
                             </div>
-                            <div class="price-field produtc-price"><p class="price">${{$item->model->regular_price}}</p></div>
+                            <div class="price-field produtc-price col-md-1"><p class="price">${{$item->model->regular_price}}</p></div>
                             <div class="quantity">
                                 <div class="quantity-input">
                                     <input type="text" name="product-quatity" value="{{($item->qty)}}" data-max="120" pattern="[0-9]*" >			
