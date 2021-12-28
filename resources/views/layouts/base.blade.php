@@ -85,8 +85,13 @@
 														<a title="Categories" href="{{route('admin.categories')}}">Categories</a>
 													</li>	
 													<li class="menu-item">
+														<a title="Product Attributes" href="{{route('admin.attributes')}}">Product Attributes</a>
+													</li>	
+													
+													<li class="menu-item">
 														<a title="Products" href="{{route('admin.products')}}">Products</a>
 													</li>	
+
 													<li class="menu-item">
 														<a title="Manage Home Slider" href="{{route('admin.homeSlider')}}">Manage Home Slider</a>
 													</li>
@@ -98,7 +103,7 @@
 														<a title="Sale Setting" href="{{route('admin.sale')}}">Sale Setting</a>
 													</li>
 													<li class="menu-item">
-														<a title="All Coupons" href="{{route('admin.coupons')}}">All Coupons</a>
+														<a title="Coupons" href="{{route('admin.coupons')}}">Coupons</a>
 													</li>
 													<li class="menu-item">
 														<a title="Show Orders" href="{{route('admin.orders')}}">Show Orders</a>

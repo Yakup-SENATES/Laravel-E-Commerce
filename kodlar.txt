@@ -211,6 +211,13 @@ Route ekledik.
 
 ----------------------------------------------------------------------------------------------------
 
+Create Product Attriburtes
+----------------------------------------------------------------------------------------------------
+php artisan make:model ProductAttribute -m kodunu yazdık ve migration u na string('name) değeri eklendi.
+3 adet livewire component okluşturuldu.
+$ php artisan make:livewire admin/AdminAttributesComponent edit ve add componentleri de eklendi
+----------------------------------------------------------------------------------------------------
+
 
 
 
