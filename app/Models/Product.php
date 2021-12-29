@@ -52,8 +52,9 @@ class Product extends Model
      *
      * @return void
      */
-    public function attributeValue()
+    public function attributeValues()
     {
+        //dd($this->hasMany(AttributeValue::class)->get());
         return $this->hasMany(AttributeValue::class);
     }
 }

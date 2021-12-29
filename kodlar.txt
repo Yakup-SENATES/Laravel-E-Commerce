@@ -267,5 +267,10 @@ call to member function where() on null hatası alıyordum.
 create_attribute_values migrationunda foreign key constraint are incompacable 
 hatası alıyorduk product tablosunda id değerini int yapmak zorunda kaldım
 
+
+++++ Hata !!! +++++
+Details Page de relation ile alakalı sorunlar vardı attributeler 
+istediğim relation ile ilgili veriyi vermiyordu hata alıyordum. geçici çözüm uyguladım . 
+Line-99 daki foreach içerisinde belirtilmiştir.
 /**********************************************************************************************
 **********************************************************************************************/

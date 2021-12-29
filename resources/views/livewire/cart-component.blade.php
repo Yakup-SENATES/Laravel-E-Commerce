@@ -30,9 +30,15 @@
                             <div class="product-image">
                                 <figure><img src="{{asset('assets/images/products')}}/{{$item->model->image}}" alt="{{$item->model->name}}"></figure>
                             </div>
-                            <div class="product-name col-md-6">
+                            <div class="product-name">
                                 <a class="link-to-product" href="{{ route('product.details', ['slug'=>$item->model->slug]) }}">{{$item->model->name}}</a>
                             </div>
+                            @foreach ($item->options as $key=>$value)
+                                <div class="col-md-1" style="vertical-align:middle; width: 180px;">
+                                    <p><b>{{$key}}:{{$value}}</b></p>
+                                </div>
+                            @endforeach
+
                             <div class="price-field produtc-price col-md-1"><p class="price">${{$item->model->regular_price}}</p></div>
                             <div class="quantity">
                                 <div class="quantity-input">

@@ -61,8 +61,8 @@ class AdminEditProductComponent extends Component
         $this->scategory_id = $product->subcategory_id;
 
         //Attribute Values
-        $this->inputs = $product->attributeValue->where('product_id', $product->id)->unique('product_attribute_id')->pluck('product_attribute_id')->toArray();
-        $this->attribute_arr = $product->attributeValue->where('product_id', $product->id)->unique('product_attribute_id')->pluck('attribute_id')->toArray();
+        $this->inputs = $product->attributeValues->where('product_id', $product->id)->unique('product_attribute_id')->pluck('product_attribute_id')->toArray();
+        $this->attribute_arr = $product->attributeValues->where('product_id', $product->id)->unique('product_attribute_id')->pluck('attribute_id')->toArray();
 
         foreach ($this->attribute_arr as $a_arr) {
 

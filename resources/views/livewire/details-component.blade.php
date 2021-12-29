@@ -94,7 +94,35 @@
                             <div class="stock-info in-stock">
                                 <p class="availability">Availability: <b>{{$product->stock_status}}</b></p>
                             </div>
-                            <div class="quantity">
+
+							<div>								
+								@foreach ($product->attributeValues->unique('product_attribute_id') as $av)
+									@php
+									$test =(DB::table('product_attributes')->where('id',$av->product_attribute_id)->first());
+									@endphp
+									<div class="row" style="maring-top: 20px">
+										<div class="col-xs-2">																					
+											<p>{{$test->name}}</p>
+											{{--<p>{{$av->productAttribute->name}}</p> hata aldık--}}
+										</div>
+										<div class="col-xs-10">
+											<select class="form-control" style="width: 200px" wire:model="selected_attr.{{$test->name}}">
+												<!--pav: Product Attribute Value -->
+												<option value="">Select Attribute</option>
+											@foreach ($product->attributeValues->where('product_attribute_id', $test->id) as $pav)
+												<option value="{{$pav->value}}">{{$pav->value}}</option>
+											@endforeach
+											{{--@foreach ($av->productAttribute->attributeValues->where('product_id',$product->id) as $pav)
+												<option value="{{$pav->id}}">{{$pav->value}}</option>												
+												@endforeach--}}
+											</select>
+										</div>
+									</div>
+
+								@endforeach
+							</div>
+
+                            <div class="quantity" style="margin-top: 10px;">
                             	<span>Quantity:</span>
 								<div class="quantity-input">
 									<input type="text" name="product-quatity" value="1" data-max="120" pattern="[0-9]*" wire:model="qty">

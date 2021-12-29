@@ -10,7 +10,7 @@ use Cart;
 
 class DetailsComponent extends Component
 {
-    public $slug, $qty;
+    public $slug, $qty, $selected_attr = [];
 
 
     /**
@@ -35,8 +35,9 @@ class DetailsComponent extends Component
      */
     public function store($product_id, $product_name, $product_price)
     {
-
-        Cart::instance('cart')->add($product_id, $product_name, $this->qty, $product_price)->associate('App\Models\Product');
+        //print_r($this->selected_attr);
+        //dd('test');
+        Cart::instance('cart')->add($product_id, $product_name, $this->qty, $product_price, $this->selected_attr)->associate('App\Models\Product');
         session()->flash('success', 'Product added to cart!');
         return redirect()->route('cart');
     }
