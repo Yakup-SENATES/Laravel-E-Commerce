@@ -118,6 +118,6 @@ class AdminSettingComponent extends Component
      */
     public function render()
     {
-        return view('livewire.admin.admin-setting-component')->layout('layouts.base');
+        return view('livewire.admin.admin-setting-component')->layout('layouts.admin');
     }
 }

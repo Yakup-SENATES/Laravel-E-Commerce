@@ -52,6 +52,6 @@ class AdminProductComponent extends Component
             ->orWhere('regular_price', 'LIKE', $search)
             ->orWhere('sale_price', 'LIKE', $search)
             ->orderBy('id', 'DESC')->paginate(10);
-        return view('livewire.admin.admin-product-component', compact('products'))->layout('layouts.base');
+        return view('livewire.admin.admin-product-component', compact('products'))->layout('layouts.admin');
     }
 }

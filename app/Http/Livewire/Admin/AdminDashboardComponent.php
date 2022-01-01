@@ -18,6 +18,6 @@ class AdminDashboardComponent extends Component
         $todayRevenue = Order::where('status', 'delivered')->whereDate('created_at', Carbon::today())->sum('total');
 
 
-        return view('livewire.admin.admin-dashboard-component', compact('orders', 'totalSales', 'totalRevenue', 'todaySales', 'todayRevenue'))->layout('layouts.base');
+        return view('livewire.admin.admin-dashboard-component', compact('orders', 'totalSales', 'totalRevenue', 'todaySales', 'todayRevenue'))->layout('layouts.admin');
     }
 }

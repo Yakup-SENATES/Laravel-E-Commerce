@@ -33,6 +33,6 @@ class AdminOrderComponent extends Component
     public function render()
     {
         $orders = Order::orderBy('created_at', 'desc')->paginate(12);
-        return view('livewire.admin.admin-order-component', compact('orders'))->layout('layouts.base');
+        return view('livewire.admin.admin-order-component', compact('orders'))->layout('layouts.admin');
     }
 }

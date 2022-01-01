@@ -206,6 +206,6 @@ class AdminAddProductComponent extends Component
 
         $pattributes = ProductAttribute::all();
 
-        return view('livewire.admin.admin-add-product-component', compact('categories', 'scategories', 'pattributes'))->layout('layouts.base');
+        return view('livewire.admin.admin-add-product-component', compact('categories', 'scategories', 'pattributes'))->layout('layouts.admin');
     }
 }

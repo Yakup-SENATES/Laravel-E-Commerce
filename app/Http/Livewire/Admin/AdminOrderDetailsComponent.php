@@ -31,6 +31,6 @@ class AdminOrderDetailsComponent extends Component
     {
         $order = Order::findOrFail($this->order_id);
 
-        return view('livewire.admin.admin-order-details-component', compact('order'))->layout('layouts.base');
+        return view('livewire.admin.admin-order-details-component', compact('order'))->layout('layouts.admin');
     }
 }

@@ -99,6 +99,6 @@ class AdminEditCategoryComponent extends Component
     public function render()
     {
         $categories = Category::all();
-        return view('livewire.admin.admin-edit-category-component', compact('categories'))->layout('layouts.base');
+        return view('livewire.admin.admin-edit-category-component', compact('categories'))->layout('layouts.admin');
     }
 }

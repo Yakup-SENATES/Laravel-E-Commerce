@@ -51,6 +51,6 @@ class AdminAddAttributeComponent extends Component
      */
     public function render()
     {
-        return view('livewire.admin.admin-add-attribute-component')->layout('layouts.base');
+        return view('livewire.admin.admin-add-attribute-component')->layout('layouts.admin');
     }
 }
