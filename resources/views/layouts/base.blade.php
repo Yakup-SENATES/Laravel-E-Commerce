@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Home</title>	
+	<title>ShopTY - Hoşgeldiniz</title>	
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/images/favicon.ico')}}">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,400italic,600,600italic,700,700italic&amp;subset=latin,latin-ext" rel="stylesheet">
@@ -40,32 +40,32 @@
 						<div class="topbar-menu left-menu">
 							<ul>
 								<li class="menu-item" >
-									<a title="Hotline: (+123) 456 789" href="#" ><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
+									<a href="#" ><span class="icon label-before fa fa-mobile"></span>Çağrı Merkezi: 444 0 88</a>
 								</li>
 							</ul>
 						</div>
 						<div class="topbar-menu right-menu">
 							<ul>						
 								<li class="menu-item lang-menu menu-item-has-children parent">
-									<a title="English" href="#"><span class="img label-before"><img src="{{ asset('assets/images/lang-en.png')}}" alt="lang-en"></span>English<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+									<a href="#"><span class="img label-before"><img src="{{ asset('assets/images/lang-tr.png')}}" alt="lang-en"></span><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 									<ul class="submenu lang" >
-										<li class="menu-item" ><a title="hungary" href="#"><span class="img label-before"><img src="{{ asset('assets/images/lang-hun.png')}}" alt="lang-hun"></span>Hungary</a></li>
-										<li class="menu-item" ><a title="german" href="#"><span class="img label-before"><img src="{{ asset('assets/images/lang-ger.png')}}" alt="lang-ger" ></span>German</a></li>
+										<li class="menu-item" ><a href="#"><span class="img label-before"><img src="{{ asset('assets/images/lang-en.png')}}" alt="lang-hun"></span></a></li>
+										{{--<li class="menu-item" ><a title="german" href="#"><span class="img label-before"><img src="{{ asset('assets/images/lang-ger.png')}}" alt="lang-ger" ></span>German</a></li>
 										<li class="menu-item" ><a title="french" href="#"><span class="img label-before"><img src="{{ asset('assets/images/lang-fra.png')}}" alt="lang-fre"></span>French</a></li>
-										<li class="menu-item" ><a title="canada" href="#"><span class="img label-before"><img src="{{ asset('assets/images/lang-can.png')}}" alt="lang-can"></span>Canada</a></li>
+										<li class="menu-item" ><a title="canada" href="#"><span class="img label-before"><img src="{{ asset('assets/images/lang-can.png')}}" alt="lang-can"></span>Canada</a></li>--}}
 									</ul>
 								</li>
 								<li class="menu-item menu-item-has-children parent" >
-									<a title="Dollar (USD)" href="#">Dollar (USD)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+									<a href="#">₺ (TL)<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 									<ul class="submenu curency" >
 										<li class="menu-item" >
-											<a title="Pound (GBP)" href="#">Pound (GBP)</a>
+											<a title="Pound (GBP)" href="#">$ (USD)</a>
 										</li>
 										<li class="menu-item" >
-											<a title="Euro (EUR)" href="#">Euro (EUR)</a>
+											<a title="Euro (EUR)" href="#">€ (EUR)</a>
 										</li>
 										<li class="menu-item" >
-											<a title="Dollar (USD)" href="#">Dollar (USD)</a>
+											<a title="Dollar (USD)" href="#">£ (GBP)</a>
 										</li>
 									</ul>
 								</li>
@@ -73,13 +73,22 @@
 									@auth
 										@if (Auth::user()->utype=='ADM')
 											<li class="menu-item menu-item-has-children parent" >
-												<a title="My Account" href="#">My Account({{Auth::user()->name}} ) <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+												<a title="My Account" href="#">Hesabım ({{Auth::user()->name}}) <i class="fa fa-angle-down" aria-hidden="true"></i></a>
 												<ul class="submenu curency" >
 													<li class="menu-item" >
 														<a title="Dashboard" href="{{ route('admin.dashboard') }}">Dashboard</a>
 													</li>	
+<<<<<<< main
 													<li class="menu-item">
 														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout_id').submit(); ">Logout</a>
+=======
+													{{--<li class="menu-item">
+														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout_id').submit(); ">Logout</a>
+													</li>	--}}
+													
+													{{--<li class="menu-item">
+														<a title="Categories" href="{{route('admin.categories')}}">Categories</a>
+>>>>>>> local
 													</li>	
 													<li class="menu-item">
 														<a title="Categories" href="{{route('admin.categories')}}">Categories</a>
@@ -100,6 +109,10 @@
 													<li class="menu-item">
 														<a title="All Coupons" href="{{route('admin.coupons')}}">All Coupons</a>
 													</li>
+<<<<<<< main
+=======
+													--}}
+>>>>>>> local
 													
 													<li class="menu-item">
 														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout_id').submit(); ">Logout</a>
@@ -111,7 +124,7 @@
 											</li>									
 										@else
 											<li class="menu-item menu-item-has-children parent" >
-												<a title="My Account" href="#">My Account({{Auth::user()->name}} ) <i class="fa fa-angle-down" aria-hidden="true"></i></a>
+												<a href="#">Hesabım ({{Auth::user()->name}}) <i class="fa fa-angle-down" aria-hidden="true"></i></a>
 												<ul class="submenu curency" >
 													<li class="menu-item" >
 														<a title="Dashboard" href="{{ route('user.dashboard') }}">Dashboard</a>
@@ -126,8 +139,8 @@
 											</li>	
 											@endif													
 									@else
-										<li class="menu-item" ><a title="Register or Login" href="{{route('login')}}">Login</a></li>
-										<li class="menu-item" ><a title="Register or Login" href="{{route('register')}}">Register</a></li>
+										<li class="menu-item" ><a title="Register or Login" href="{{route('login')}}">Giriş Yap</a></li>
+										<li class="menu-item" ><a title="Register or Login" href="{{route('register')}}">Kayıt Ol</a></li>
 									@endif
 						    	@endif
 							</ul>
@@ -167,13 +180,13 @@
 				<div class="nav-section header-sticky">
 					<div class="header-nav-section">
 						<div class="container">
-							<ul class="nav menu-nav clone-main-menu" id="mercado_haead_menu" data-menuname="Sale Info" >
+							{{--<ul class="nav menu-nav clone-main-menu" id="mercado_haead_menu" data-menuname="Sale Info" >
 								<li class="menu-item"><a href="#" class="link-term">Weekly Featured</a><span class="nav-label hot-label">hot</span></li>
 								<li class="menu-item"><a href="#" class="link-term">Hot Sale items</a><span class="nav-label hot-label">hot</span></li>
 								<li class="menu-item"><a href="#" class="link-term">Top new items</a><span class="nav-label hot-label">hot</span></li>
 								<li class="menu-item"><a href="#" class="link-term">Top Selling</a><span class="nav-label hot-label">hot</span></li>
 								<li class="menu-item"><a href="#" class="link-term">Top rated items</a><span class="nav-label hot-label">hot</span></li>
-							</ul>
+							</ul>--}}
 						</div>
 					</div>
 

@@ -51,6 +51,6 @@ class AdminEditHomeSlider extends Component
 
     public function render()
     {
-        return view('livewire.admin.admin-edit-home-slider')->layout('layouts.base');
+        return view('livewire.admin.admin-edit-home-slider')->layout('layouts.admin');
     }
 }
